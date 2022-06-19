@@ -6,6 +6,45 @@ import styles from './App.module.css';
 
 import './global.css';
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'http://github.com/bduarte10.png',
+      name: 'Bruno Duarte',
+      role: 'Web Developer',
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      {
+        type: 'paragraph',
+        content:
+          'Acabei de subir mais um projeto no meu portifólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
+      },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2022-06-15 20:00:00'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'http://github.com/maykbrito.png',
+      name: 'Mayk Brito',
+      role: 'Educator @Rocketseat',
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      {
+        type: 'paragraph',
+        content:
+          'Acabei de subir mais um projeto no meu portfólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
+      },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2022-06-10 20:00:00'),
+  },
+];
+
 export function App() {
   return (
     <div>
@@ -13,14 +52,15 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Bruno Duarte"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum veritatis ipsum rem voluptatem nobis earum obcaecati corrupti quae voluptas? Sed voluptas "
-          />
-          <Post
-            author="Bruno Duarte"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum veritatis ipsum rem voluptatem nobis earum obcaecati corrupti quae voluptas? Sed voluptas "
-          />
+          {posts.map((post) => {
+            return (
+              <Post
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            );
+          })}
         </main>
       </div>
     </div>
